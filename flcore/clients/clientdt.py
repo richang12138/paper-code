@@ -54,7 +54,7 @@ class KDLoss(nn.Module):
                         reduction='batchmean') * self.T * self.T
         return kd_loss
 
-class ClientVLS(object):
+class ClientDT(object):
     def __init__(self, args, id, train_samples, **kwargs):
         self.args = args
         self.model = copy.deepcopy(args.model)
