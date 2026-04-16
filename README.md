@@ -24,7 +24,7 @@ Here we provide the implementation on  Cifar10, Cifar100 The  Cifar10 and Cifar1
 | `nc`             | Number of clients.                                                                                    |
 | `jr`             | The client joining rate.                                                                              |
 | `nb`             | Number of classes.                                                                                    |
-| `data`           | Dataset to use. Options: `mnist `, `cifar10 `, `cifar100`, `tinyimagenet`.                            |
+| `data`           | Dataset to use. Options:  `cifar10 `, `cifar100`.                            |
 | `algo`           | Algorithm to use.                                                                                     |
 | `gr`             | Global_rounds.                                                                                        |
 | `did`            | Device id.                                                                                            |
