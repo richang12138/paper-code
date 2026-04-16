@@ -7,7 +7,7 @@ import copy
 import clip
 
 
-class FedVLS(object):
+class FedDT(object):
     def __init__(self, args, times, party2loaders, global_train_dl, test_dl):
         self.args = args
         self.device = args.device
