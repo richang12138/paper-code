@@ -375,7 +375,7 @@ class ClientDT(object):
                 # 原逻辑：no_exist_loss + weak_exist_loss；新逻辑：仅对under_avg_labels蒸馏
                 teach_output = self.teacher_model(x).detach()
                 under_avg_loss = self.distillation_loss(output, teach_output, under_avg_labels) if len(under_avg_labels) > 0 else 0.0
-                VLS_loss = under_avg_loss  # 直接使用少于平均数类别的蒸馏损失
+                GTD_loss = under_avg_loss  # 直接使用少于平均数类别的蒸馏损失
                 # -----------------------------------------------------------------------------
                 
                 # 对比学习损失（包含空类原型，原有逻辑不变）
@@ -383,8 +383,8 @@ class ClientDT(object):
                 if self.text_features is not None and feature_output is not None:
                     contrast_loss = self.contras_criterion(feature_output, y, self.text_features)
                 
-                # 组合损失（原有逻辑不变，仅VLS_loss来源修改）
-                loss = Prior_CELoss + LADE_loss + VLS_loss * self.lamda + clip_loss * self.args.clip_alpha
+                
+                loss = Prior_CELoss + LADE_loss + GTD_loss * self.lamda + clip_loss * self.args.clip_alpha
                 if contrast_loss > 0:
                     loss += self.args.contrast_alpha * contrast_loss
                 
@@ -428,8 +428,8 @@ class ClientDT(object):
         kl = nn.KLDivLoss(reduction='batchmean')
         return kl(output_log_soft, teach_output_soft)
     
-    # 保持原有VLSloss方法兼容（未使用但保留）
-    def VLSloss(self, output, teach_output, no_exist_label, exist_label, exist_prior, y):
+    
+    def GTDloss(self, output, teach_output, no_exist_label, exist_label, exist_prior, y):
         return self.distillation_loss(output, teach_output, no_exist_label)
     
     def clip_knowledge_distillation(self, x, model_output, target):
