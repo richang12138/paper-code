@@ -35,7 +35,7 @@ Here we provide the implementation on  Cifar10, Cifar100 The  Cifar10 and Cifar1
 ### Usage
 Here is an example to run FedVLS on CIFAR10 with mobilenetv2:
 ```
-python -u main.py -lbs 64 -nc 20 -jr 0.4 -nb 10 -data cifar10 -m mobilenetv2 -algo FedTail-DT -gr 100 -did 0 -aug True -lr 0.01 -partition noniid -al 0.1 -ls 10 -ed 1e-5
+python -u main.py -lbs 64 -nc 20 -jr 0.4 -nb 10 -data cifar10 -m mobilenetv2 -algo FedDT -gr 100 -did 0 -aug True -lr 0.01 -partition noniid -al 0.1 -ls 10 -ed 1e-5
 ```
 
 
