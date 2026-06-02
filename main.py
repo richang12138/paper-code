@@ -20,7 +20,7 @@ from flcore.servers.serverexp import FedEXP
 from flcore.servers.serverprox import FedProx
 from flcore.servers.servermoon import MOON
 
-from flcore.clients.clientdt import clientdt
+from flcore.clients.clientdt import clientDT
 
 from flcore.trainmodel.models import *
 from flcore.trainmodel.resnetcifar import *
